@@ -9,7 +9,6 @@ const inputCantidad = document.getElementById('cantidad');
 const inputPrecio = document.getElementById('precio');
 /** @type {HTMLInputElement} */
 const selectCategoria = document.getElementById('categoria');
-/** @type {HTMLInputElement} */
 const tbody = document.getElementsByTagName('tbody')[0];
 const cantidadTotalElement = document.getElementById('cantidad-total');
 const precioTotalElement = document.getElementById('precio-total');
@@ -30,7 +29,7 @@ form.addEventListener('submit', onSubmit);
 function onSubmit(event){
     event.preventDefault();
     const data = new FormData(form);
-    const values = Array.from(data.entries);
+    const values = Array.from(data.entries());
 
     const [frmCodigo, frmNombre, frmCantidad, frmPrecio, frmCategoria] = values;
 
@@ -41,8 +40,8 @@ function onSubmit(event){
     const categoria = frmCategoria[1];
     const total = cantidad * precio;
 
-    cantidadTotal = parseFloat(cantidad);
-    precioTotales = parseFloat(precio);
+    cantidadTotal = parseFloat(cantidad) + cantidadTotal;
+    precioTotales = parseFloat(precio) + precioTotales;
     granTotal = parseFloat(total) + granTotal;
 
     let tr;
@@ -65,17 +64,17 @@ function onSubmit(event){
         <td>${total}</td>
         <td> 
             <div class="btn-group">
-                <a title="Editar" href="#" onclick"onEdit(event)" class="btn btn-sm btn-outline-secondary">
+                <a title="Editar" href="#" onclick="onEdit(event)" class="btn btn-sm btn-outline-secondary">
                     <i class="bi bi-pencil-square"></i>
                 </a> 
-                <a title="Eliminar" href="#" onclick"onDelete(event)" class="btn btn-sm btn-outline-danger">
+                <a title="Eliminar" href="#" onclick="onDelete(event)" class="btn btn-sm btn-outline-danger">
                     <i class="bi bi-trash3"></i>
                 </a>
             </div>
         </td>
     `;
 
-    cantidadTotalElement.innerText = cantidad;
+    cantidadTotalElement.innerText = cantidadTotal;
     precioTotalElement.innerText = precioTotales;
     granTotatlElement.innerText = granTotal;
     form.reset();
