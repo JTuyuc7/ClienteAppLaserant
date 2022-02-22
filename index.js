@@ -79,7 +79,6 @@ function onSubmit(event){
     granTotatlElement.innerText = granTotal;
     form.reset();
 }
-//https://www.facebook.com/681322435249967/posts/4815265908522245/?d=n
 
 /**
  * @param {Event} event
