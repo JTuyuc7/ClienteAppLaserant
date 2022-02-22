@@ -24,8 +24,6 @@ const persona1 = {
 //console.log('persona', persona);
 //console.log('persona1', persona1)
 
-//jnicole_pda
-
 // ARREGLOS INMUTABLES
 const listaNumeros = [1,2,3,4,5];
 
