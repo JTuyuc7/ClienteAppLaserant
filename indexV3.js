@@ -1,5 +1,5 @@
 
-// CODIGO SIN REFACTORIZAR
+// CODIGO COPIA
 
 const form = document.getElementsByTagName('form')[0];
 /** @type {HTMLInputElement} */
