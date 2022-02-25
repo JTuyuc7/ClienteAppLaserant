@@ -19,3 +19,6 @@ Entendiendo los arreglos y objetos inmutables
 
 # Refactor del codigo
 - Entender la logica de separar los componentes en secciones mas pequeñas que permiten mantener y modificar mejor la aplicacion, que pueda ser mas legible el codigo para nosotros y para los miembros del equipo.
+
+# Aplicando Middlewares
+- Entendiendo el funcionamiento de los Middlewares, aplicandolos, refactorizando el codigo para tener funciones puras.
