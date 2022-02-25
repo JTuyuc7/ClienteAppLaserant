@@ -16,3 +16,6 @@ Entendiendo los arreglos y objetos inmutables
 # Mostrar los datos editados en el form
 - Agregar la funcionalidad de mostrar los datos en el form
 - Convertir los datos de string a numero para su calculo
+
+# Refactor del codigo
+- Entender la logica de separar los componentes en secciones mas pequeñas que permiten mantener y modificar mejor la aplicacion, que pueda ser mas legible el codigo para nosotros y para los miembros del equipo.
