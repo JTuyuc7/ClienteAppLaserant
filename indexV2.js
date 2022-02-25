@@ -63,7 +63,27 @@ const reducer = (state, action) => {
             ...state,
             productos: productosCopia
         }
+    };
+
+    /*
+    if( action.type === 'PRODUCTO_SELECCIONADO'){
+        //console.log(state.producto, 'seleccionado')
+        const codigo = action.payload.codigo;
+        return{
+            ...state,
+            producto: state.productos.find( x => x.codigo === codigo ) || {}
+        }
     }
+    */
+    if( action.type === 'PRODUCTO_SELECCIONADO'){
+        console.log(action.payload, 'payload')
+        return{
+            ...state,
+            producto: action.payload
+        }
+    }
+
+
 
     return state;
 }
@@ -78,10 +98,21 @@ const unsuscribe = store.subscribe( () => {
 
     if( currentState != letesState){
         letesState = currentState;
-        renderTable(currentState.productos)
+        renderTable(currentState.productos);
+        renderForm(currentState.producto);
     }
-    //console.log('ejecutando el subscribe', store.getState())
+    console.log('ejecutando el subscribe', store.getState())
 });
+
+//Llenar los datos en en form a editar
+function renderForm(producto) {
+    const { codigo, precio, cantidad, nombre, categoria} = producto;
+    inputCodigo.value = codigo;
+    inputPrecio.value = precio;
+    inputCantidad.value = cantidad;
+    inputNombre.value = nombre || '';
+    selectCategoria.value = categoria;
+}
 
 // Mostrar los nuevos productos en UI
 function renderTable(productos){
@@ -115,6 +146,33 @@ function renderTable(productos){
                     codigo: ele.codigo
                 }
             })
+        });
+
+        /*
+        editar.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            store.dispatch({
+                type: 'PRODUCTO_SELECCIONADO',
+                payload: {
+                    codigo: ele.codigo
+                }
+            })
+        })
+        */
+        // Cambiar el payload del producto seleccionado para evitar validaciones
+        editar.addEventListener('click', (e) => {
+            e.preventDefault();
+            store.dispatch({
+                type: 'PRODUCTO_SELECCIONADO',
+                payload: {
+                    nombre: ele.nombre,
+                    codigo: ele.codigo,
+                    cantidad: ele.cantidad,
+                    precio: ele.precio,
+                    categoria: ele.categoria
+                }
+            })
         })
         return tr;
     })
@@ -133,6 +191,51 @@ function renderTable(productos){
     granTotatlElement.innerText = granTotal;
 }
 
+form.addEventListener('submit', onSubmit);
+/**
+ * @param {Event} event
+ */
+function onSubmit(event){
+    event.preventDefault();
+    const data = new FormData(form);
+    const values = Array.from(data.entries());
+
+    const [frmCodigo, frmNombre, frmCantidad, frmPrecio, frmCategoria] = values;
+
+    const codigo = parseInt(frmCodigo[1]);
+    const nombre = frmNombre[1];
+    const cantidad = parseFloat(frmCantidad[1]);
+    const precio = parseFloat(frmPrecio[1]);
+    const categoria = frmCategoria[1];
+
+    if( codigo ){
+        store.dispatch({
+            type: 'PRODUCTO_MODIFICADO',
+            payload: {
+                nombre,
+                cantidad,
+                precio,
+                categoria,
+                codigo
+            }
+        })
+    }else {
+        store.dispatch({
+            type: "PRODUCTO_AGREGADO",
+            payload: {
+                nombre,
+                cantidad,
+                precio,
+                categoria,
+            }
+        })
+    }
+
+    store.dispatch({
+        type: 'PRODUCTO_SELECCIONADO',
+            payload: {}
+    })
+}
 
 store.dispatch({
     type: "PRODUCTO_AGREGADO",
@@ -163,16 +266,6 @@ store.dispatch({
         categoria: 3
     }
 });
-
-store.dispatch({
-    type: "PRODUCTO_AGREGADO",
-    payload: {
-        nombre: 'Producto 4',
-        cantidad: 5,
-        precio: 10,
-        categoria: 4
-    }
-})
 
 // Modificar el producto
 store.dispatch({
