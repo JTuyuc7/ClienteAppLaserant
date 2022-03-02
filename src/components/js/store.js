@@ -6,7 +6,7 @@ const actionTypes = {
     PRODUCTO_AGREGADO_MODIFICADO: 'PRODUCTO_AGREGADO_MODIFICADO'
 };
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
 
     switch (action.type) {
         case actionTypes.PRODUCTO_AGREGADO:
@@ -23,31 +23,31 @@ const reducer = (state, action) => {
 }
 
 // Crear un actio builder
-const productoSeleccionado = (codigo) => ({
+export const productoSeleccionado = (codigo) => ({
     type: actionTypes.PRODUCTO_SELECCIONADO,
     payload: {
         codigo: codigo
     }
 });
 
-const productoEliminado = (codigo) => ({
+export const productoEliminado = (codigo) => ({
     type: actionTypes.ELIMINAR_PRODUCTO,
     payload: {
         codigo: codigo
     }
 });
 
-const productoEditado = (data) => ({
+export const productoEditado = (data) => ({
     type: actionTypes.PRODUCTO_MODIFICADO,
     payload: data
 });
 
-const productoNuevo = (data) => ({
+export const productoNuevo = (data) => ({
     type: actionTypes.PRODUCTO_AGREGADO,
     payload: data
 });
 
-const agregarOModificarProducto = (payload) => ({
+export const agregarOModificarProducto = (payload) => ({
     type: actionTypes.PRODUCTO_AGREGADO_MODIFICADO,
     payload: payload
 })
@@ -63,14 +63,14 @@ function loggerMiddleware(store){
     }
 }*/
 
-const loggerMiddleware = store => next => action => {
+export const loggerMiddleware = store => next => action => {
     console.log('dispatching', action);
     const result = next(action);
     console.log('nex state', store.getState());
     return result;
 };
 
-const agregarOmodificarMiddlewae = store => next => action => {
+export const agregarOmodificarMiddlewae = store => next => action => {
     if( action.type != actionTypes.PRODUCTO_AGREGADO_MODIFICADO){
         return next(action)
     }
@@ -85,7 +85,7 @@ const agregarOmodificarMiddlewae = store => next => action => {
     return store.dispatch(productoSeleccionado(null))
 }
 
-function generadorCodigoBuilder(codigoInicial){
+export function generadorCodigoBuilder(codigoInicial){
     let codigo = codigoInicial;
     return store => next => action => {
         if( action.type != actionTypes.PRODUCTO_AGREGADO){

@@ -1,3 +1,7 @@
+import { applyMiddleware, createStore } from 'redux';
+import { ui } from './ui';
+import * as $store from './store';
+
 // State para los productos
 const preloadedState = {
     producto: {},
@@ -5,12 +9,12 @@ const preloadedState = {
 };
 
 // Crear la Store
-const middleware = Redux.applyMiddleware(
-    loggerMiddleware,
-    agregarOmodificarMiddlewae,
-    generadorCodigoBuilder(0)
+const middleware = applyMiddleware(
+    $store.loggerMiddleware,
+    $store.agregarOmodificarMiddlewae,
+    $store.generadorCodigoBuilder(0)
 )
-const store = Redux.createStore(reducer, preloadedState, middleware);
+const store = createStore($store.reducer, preloadedState, middleware);
 
 
 store.subscribe(dispatchOnChange( store, (state) => {
@@ -20,15 +24,15 @@ store.subscribe(dispatchOnChange( store, (state) => {
 
 // Definir el nuevo submit
 ui.onFormSubmit = (data) => {
-    store.dispatch(agregarOModificarProducto(data))
+    store.dispatch($store.agregarOModificarProducto(data))
 }
 
 ui.onEliminarClick = (codigo) => {
-    store.dispatch(productoEliminado(codigo))
+    store.dispatch($store.productoEliminado(codigo))
 }
 
 ui.onEditarClick = (codigo) => {
-    store.dispatch(productoSeleccionado(codigo))
+    store.dispatch($store.productoSeleccionado(codigo))
 }
 
 function dispatchOnChange(store, dispatch){
