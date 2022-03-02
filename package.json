@@ -1,0 +1,25 @@
+{
+  "name": "PrimeraSemana",
+  "version": "1.0.0",
+  "description": "First Application \r Create a simple app using html and bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JTuyuc7/PrimeraSemana.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JTuyuc7/PrimeraSemana/issues"
+  },
+  "homepage": "https://github.com/JTuyuc7/PrimeraSemana#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.1",
+    "redux": "^4.1.2"
+  }
+}
