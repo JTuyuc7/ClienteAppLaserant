@@ -22,3 +22,22 @@ Entendiendo los arreglos y objetos inmutables
 
 # Aplicando Middlewares
 - Entendiendo el funcionamiento de los Middlewares, aplicandolos, refactorizando el codigo para tener funciones puras.
+
+# Empezando a usar los node_modules
+- Reemplazar Redux, Bootstrap y bootstrap-icons, dejar de usar el enlace web y usar las dependencias.
+
+# Configurando Webpack y React
+- Instalar 
+- @babel/core
+- @babel/preset-env
+- @babel/preset-react
+- babel-loader
+- clean-webpack-plugin
+- css-loader
+- html-webpack-plugin
+- mini-css-extract-plugin
+- style-loader
+- webpack
+- webpack-cli
+- como dependencias de desarrollo para configurar el como esta estructurada una app de React
+- 
