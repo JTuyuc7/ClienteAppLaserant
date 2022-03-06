@@ -1,3 +1,4 @@
+/*
 import { applyMiddleware, createStore } from 'redux';
 import { ui } from './ui';
 import * as $store from './store';
@@ -49,3 +50,7 @@ function dispatchOnChange(store, dispatch){
         }
     }
 }
+
+// Codigo Antes de usar React Redux
+
+*/

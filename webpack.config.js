@@ -11,7 +11,7 @@ const devPlugins = !isDevelopment ? [] : [ new ReactRefreshWebpackPlugin() ]
 module.exports = {
     entry: "./src/index.js",
     output: {
-        filename: '[name].[contenthash].js',
+        filename: "[name].[contenthash].js",
         path: path.resolve(__dirname, "dist"),
         publicPath: ""
     },
@@ -39,8 +39,8 @@ module.exports = {
         ]
     },
     plugins: [
-        //...devPlugins,
-        new ReactRefreshWebpackPlugin(),
+        ...devPlugins,
+        //new ReactRefreshWebpackPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"

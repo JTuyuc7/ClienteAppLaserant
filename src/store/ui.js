@@ -133,3 +133,5 @@ function renderTable(productos){
     precioTotalElement.innerText = precioTotal;
     granTotatlElement.innerText = granTotal;
 }
+
+// Ui antes de usar React Redux
