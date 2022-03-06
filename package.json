@@ -4,7 +4,7 @@
   "description": "First Application \r Create a simple app using html and bootstrap",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "start": "webpack serve"
   },
   "repository": {
@@ -23,6 +23,7 @@
     "bootstrap-icons": "^1.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "redux": "^4.1.2"
   },
   "devDependencies": {
@@ -32,7 +33,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.6.0",
+    "css-loader": "^6.7.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
     "react-refresh": "^0.11.0",

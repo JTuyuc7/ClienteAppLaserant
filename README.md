@@ -41,3 +41,8 @@ Entendiendo los arreglos y objetos inmutables
 - webpack-cli
 - como dependencias de desarrollo para configurar el como esta estructurada una app de React
 - 
+
+# React, Redux parte 2
+- Agregando Redux como dependecia
+- Configurando Webpack para mostrar la aplicacion en modo desarrollo
+- Agregar el Provider y el store para tener accesso al state general en la aplicacion.

@@ -70,6 +70,23 @@ export const loggerMiddleware = store => next => action => {
     return result;
 };
 
+// Almacenar datos en local storage
+export const StorageMiddleware = store => next => action => {
+    const actions = [
+        actionTypes.PRODUCTO_AGREGADO,
+        actionTypes.PRODUCTO_AGREGADO_MODIFICADO,
+        actionTypes.ELIMINAR_PRODUCTO
+    ];
+    const result = next(action);
+    if(actions.indexOf(action.type) >= 0){
+        // Guardarloa en sessionStorage
+        const state = store.getState();
+        localStorage.setItem("state", JSON.stringify(state))
+    }
+
+    return result;
+}
+
 export const agregarOmodificarMiddlewae = store => next => action => {
     if( action.type != actionTypes.PRODUCTO_AGREGADO_MODIFICADO){
         return next(action)

@@ -1,6 +1,8 @@
 @import "bootstrap";
 
 .app {
-    color: black;
+    color: red;
     font-family: sans-serif;
+    background-color: green;
+    background-image: url("./imagenPrueba.jpg");
 }

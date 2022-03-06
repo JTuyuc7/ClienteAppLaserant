@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import './components/js/app';
-
+import App from './App';
+import { Provider } from 'react-redux';
+import store from './store/index';
 
 const container = document.getElementById('root');
 
-const App = () => (
-    <div className='app'>
-        <h1>Hola React hace Web pack render refresh?</h1>
-    </div>
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>, 
+    container
 );
-
-ReactDOM.render(<App/>, container);
