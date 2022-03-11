@@ -13,5 +13,3 @@ ReactDOM.render(
     </Provider>, 
     container
 );
-
-store.dispatch({ type: 'GET_PRODUCTS' })

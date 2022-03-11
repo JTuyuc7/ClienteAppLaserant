@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { agregarOmodificarMiddlewae, agregarOModificarProducto } from '../store/store';
+import { useParams } from 'react-router-dom';
+import { agregarOmodificarMiddlewae, agregarOModificarProducto, productoSeleccionado } from '../store/store';
 
 const Formulario = () => {
-
+    const { codigo } = useParams();
     const categorias = [
         { codigo: 1, nombre: 'Categoria 1'},
         { codigo: 2, nombre: 'Categoria 2'},
@@ -31,6 +32,10 @@ const Formulario = () => {
             precio: producto.precio || '',
             categoria: producto.categoria || 1
         })
+
+        if( codigo != producto.codigo ){
+            dispatch(productoSeleccionado(codigo))
+        }
     },[producto])
 
     const onChange = (event) => {

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { productoEliminado, productoSeleccionado } from '../store/store';
 
 const ProductItem = (props) => {
@@ -15,13 +16,21 @@ const ProductItem = (props) => {
             <td>${ele.total}</td>
             <td> 
                 <div className="btn-group">
-                    <a 
+                    {/* <a 
                         title="Editar" 
                         href="#" 
                         className="btn btn-sm btn-outline-secondary" 
                         onClick={ () => selecionar(ele.codigo)}>
                             <i className="bi bi-pencil-square"></i>
-                    </a> 
+                    </a>  */}
+                    <Link
+                        title='Editar'
+                        to={'/editar/'+ele.codigo}
+                        className="btn btn-sm btn-outline-secondary" 
+                        //onClick={ () => selecionar(ele.codigo)}
+                    >
+                        <i className="bi bi-pencil-square"></i>
+                    </Link>
                     <a 
                         title="Eliminar" 
                         href="#" 
@@ -43,6 +52,11 @@ const TableData = () => {
 
     const products = useSelector( (state) => state.productos);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        //store.dispatch({ type: 'GET_PRODUCTS' })
+        dispatch({ type: 'GET_PRODUCTS'})
+    },[])
 
     //const products = [
     //    { codigo: 1, nombre: 'Producto 1', cantidad: 15, precio: 250, total: 500},

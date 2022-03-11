@@ -20,7 +20,8 @@ const apiMiddleware = (store) => (next) => async (action) => {
                 const producto = await api.newProduct(action.payload);
                 const productos = await api.all();
                 //store.dispatch({ type: 'ASSIGN_PRODUCTS', payload: productos });
-                store.dispatch(asignapProductos(productos))
+                store.dispatch(asignapProductos(productos));
+                //window.location.href = '/';
                 break;
             }
         case 'PRODUCTO_MODIFICADO':
@@ -28,7 +29,8 @@ const apiMiddleware = (store) => (next) => async (action) => {
                 await api.editProduct(action.payload);
                 const productos = await api.all();
                 //store.dispatch({ type: 'ASSIGN_PRODUCTS', payload: productos });
-                store.dispatch(asignapProductos(productos))
+                store.dispatch(asignapProductos(productos));
+                //window.location.href = '/';
                 break;
             }
         case 'ELIMINAR_PRODUCTO':
@@ -37,6 +39,17 @@ const apiMiddleware = (store) => (next) => async (action) => {
                 const productos = await api.all();
                 store.dispatch(asignapProductos(productos))
                 break;
+            }
+        case 'PRODUCTO_SELECCIONADO':
+            {
+                const { codigo } = action.payload.codigo;
+                if(codigo){
+                    const producto = await api.getProduct(codigo);
+                    next({ type: action.type, payload: producto })
+                }else {
+                    next({ type: action.type, payload: {} })
+                }
+                break
             }
         default:
             next(action)

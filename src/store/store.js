@@ -17,7 +17,10 @@ export const reducer = (state, action) => {
         case actionTypes.ELIMINAR_PRODUCTO:
             return productoEliminadoReducer(state,action);
         case actionTypes.PRODUCTO_SELECCIONADO:
-            return productoSeleccionadoReducer(state,action);
+            return {
+                ...state,
+                producto: action.payload
+            }
         case actionTypes.ASSIGN_PRODUCTS: 
             return obternerProudctosDb(state,action);
         default:
