@@ -20,6 +20,7 @@
   "homepage": "https://github.com/JTuyuc7/PrimeraSemana#readme",
   "dependencies": {
     "@babel/runtime": "^7.17.2",
+    "axios": "^0.26.1",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.1",
     "react": "^17.0.2",

@@ -3,7 +3,8 @@ const actionTypes = {
     PRODUCTO_MODIFICADO: 'PRODUCTO_MODIFICADO',
     ELIMINAR_PRODUCTO: 'ELIMINAR_PRODUCTO',
     PRODUCTO_SELECCIONADO: 'PRODUCTO_SELECCIONADO',
-    PRODUCTO_AGREGADO_MODIFICADO: 'PRODUCTO_AGREGADO_MODIFICADO'
+    PRODUCTO_AGREGADO_MODIFICADO: 'PRODUCTO_AGREGADO_MODIFICADO',
+    ASSIGN_PRODUCTS: 'ASSIGN_PRODUCTS',
 };
 
 export const reducer = (state, action) => {
@@ -17,6 +18,8 @@ export const reducer = (state, action) => {
             return productoEliminadoReducer(state,action);
         case actionTypes.PRODUCTO_SELECCIONADO:
             return productoSeleccionadoReducer(state,action);
+        case actionTypes.ASSIGN_PRODUCTS: 
+            return obternerProudctosDb(state,action);
         default:
             return state;
     }
@@ -169,5 +172,12 @@ function productoSeleccionadoReducer(state,action){
     return{
         ...state,
         producto: state.productos.find( x => x.codigo === codigo ) || {}
+    }
+}
+
+function obternerProudctosDb(state, action){
+    return{
+        ...state,
+        productos: action.payload
     }
 }

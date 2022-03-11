@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import * as $store from './store';
+import apiMiddleware from './apiRedux';
 
 const savedStateT = localStorage.getItem("state");
 const newData = savedStateT && JSON.parse(savedStateT);
@@ -15,8 +16,9 @@ const preloadedState = newData || {
 const middleware = applyMiddleware(
     $store.loggerMiddleware,
     $store.agregarOmodificarMiddlewae,
-    $store.generadorCodigoBuilder(0),
-    $store.StorageMiddleware
+    //$store.generadorCodigoBuilder(0),
+    //$store.StorageMiddleware,
+    apiMiddleware,
 )
 const store = createStore($store.reducer, preloadedState, middleware);
 
