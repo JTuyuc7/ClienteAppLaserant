@@ -1,4 +1,5 @@
 import api from "./api";
+import { push } from 'connected-react-router'; 
 
 const asignapProductos = (payload) => {
     type: 'ASSIGN_PRODUCTS',
@@ -17,20 +18,23 @@ const apiMiddleware = (store) => (next) => async (action) => {
             }
         case 'PRODUCTO_AGREGADO':
             {
-                const producto = await api.newProduct(action.payload);
-                const productos = await api.all();
+                await api.newProduct(action.payload);
+                //const productos = await api.all();
                 //store.dispatch({ type: 'ASSIGN_PRODUCTS', payload: productos });
-                store.dispatch(asignapProductos(productos));
+                //store.dispatch(asignapProductos(productos));
                 //window.location.href = '/';
+                dispatch(push('/'))
                 break;
             }
         case 'PRODUCTO_MODIFICADO':
             {
                 await api.editProduct(action.payload);
-                const productos = await api.all();
+                /* const productos = await api.all();
                 //store.dispatch({ type: 'ASSIGN_PRODUCTS', payload: productos });
                 store.dispatch(asignapProductos(productos));
-                //window.location.href = '/';
+                //window.location.href = '/'; */
+
+                dispatch(push('/'))
                 break;
             }
         case 'ELIMINAR_PRODUCTO':

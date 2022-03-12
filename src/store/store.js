@@ -7,7 +7,29 @@ const actionTypes = {
     ASSIGN_PRODUCTS: 'ASSIGN_PRODUCTS',
 };
 
-export const reducer = (state, action) => {
+export const producto = (state = {}, action) => {
+    switch (action.type) {
+        case actionTypes.PRODUCTO_SELECCIONADO:
+            return {
+                producto: action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+export const asignarProductos = (state = [], action) => {
+    switch (action.type) {
+        case actionTypes.ASSIGN_PRODUCTS:
+            return {
+                productos: action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+/* export const reducer = (state, action) => {
 
     switch (action.type) {
         case actionTypes.PRODUCTO_AGREGADO:
@@ -26,7 +48,7 @@ export const reducer = (state, action) => {
         default:
             return state;
     }
-}
+} */
 
 // Crear un actio builder
 export const productoSeleccionado = (codigo) => ({

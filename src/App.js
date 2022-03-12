@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from '../src/store/index';
 import Formulario from './components/Formulario';
 import TableData from './components/TableData';
 
@@ -9,7 +11,9 @@ const App = () => {
     return(
         <>
             <div className='container'>
-                <BrowserRouter>
+                <ConnectedRouter
+                    history={history}
+                >
 
                     <Switch>
                         <Route path="/nuevo" >
@@ -22,7 +26,7 @@ const App = () => {
                             <TableData />
                         </Route>
                     </Switch>
-                </BrowserRouter>
+                </ConnectedRouter>
             </div>
         </>
     )
